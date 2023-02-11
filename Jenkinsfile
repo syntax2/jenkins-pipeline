@@ -9,6 +9,14 @@ pipeline{
         timeout(time: 10, unit: 'NANOSECONDS')
         
     }
+    post{
+        always{
+            echo "this will always print"
+        }
+        failure{
+            echo "this will only run on failure"
+        }
+    }
     triggers{
         cron('H */4 * * *')
         pollSCM('H */4 * * *')
